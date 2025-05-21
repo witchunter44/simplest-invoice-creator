@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Kreator Faktur</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h2>Wprowadź dane faktury</h2>
+    <form action="generate_invoice.php" method="post" enctype="multipart/form-data">
+        <div class="columns-container">
+            <div class="column">
+                <label for="issue_date">Data wystawienia:</label>
+                <input type="date" id="issue_date" name="issue_date" required>
+                
+                <label for="place">Miejsce wystawienia:</label>
+                <input type="text" id="place" name="place" required>
+                
+                <label for="invoice_number">Numer faktury:</label>
+                <input type="text" id="invoice_number" name="invoice_number" required>
+            </div>
+            <div class="column">
+                <label for="sale_date">Data sprzedaży:</label>
+                <input type="date" id="sale_date" name="sale_date" required>
+                
+                <label for="payment_method">Sposób zapłaty:</label>
+                <input type="text" id="payment_method" name="payment_method" required>
+                
+                <label for="payment_due_date">Termin płatności:</label>
+                <input type="date" id="payment_due_date" name="payment_due_date" required>
+            </div>
+            <div class="column">
+                <label for="seller">Sprzedawca:</label>
+                <textarea id="seller" name="seller" rows="4" required></textarea>
+                
+                <label for="buyer">Nabywca:</label>
+                <textarea id="buyer" name="buyer" rows="4" required></textarea>
+                
+                <label for="recipient">Odbiorca:</label>
+                <textarea id="recipient" name="recipient" rows="4" required></textarea>
+                
+                <label for="account_number">Numer konta bankowego:</label>
+                <textarea id="account_number" name="account_number" rows="2" required></textarea>
+                
+                <label for="notes">Uwagi:</label>
+                <textarea id="notes" name="notes" rows="4"></textarea>
+                
+                <label for="logo">Logo (opcjonalne):</label>
+                <input type="file" id="logo" name="logo">
+            </div>
+        </div>
+        
+        <div id="items">
+            <div class="item">
+                <label for="item_name[]">Nazwa towaru/usługi:</label>
+                <input type="text" name="item_name[]" required>
+                
+                <label for="item_quantity[]">Ilość:</label>
+                <input type="number" name="item_quantity[]" step="0.01" required>
+                
+                <label for="item_price[]">Cena netto (PLN):</label>
+                <input type="number" name="item_price[]" step="0.01" required>
+                
+                <label for="item_discount[]">Rabat (%):</label>
+                <input type="number" name="item_discount[]" step="0.01" required>
+            </div>
+        </div>
+        
+        <button type="button" onclick="addItem()">Dodaj pozycję</button>
+        <button type="submit">Generuj fakturę</button>
+    </form>
+
+    <script>
+        function addItem() {
+            const itemsDiv = document.getElementById('items');
+            const newItem = document.createElement('div');
+            newItem.classList.add('item');
+            newItem.innerHTML = `
+                <label for="item_name[]">Nazwa towaru/usługi:</label>
+                <input type="text" name="item_name[]" required>
+                
+                <label for="item_quantity[]">Ilość:</label>
+                <input type="number" name="item_quantity[]" step="0.01" required>
+                
+                <label for="item_price[]">Cena netto (PLN):</label>
+                <input type="number" name="item_price[]" step="0.01" required>
+                
+                <label for="item_discount[]">Rabat (%):</label>
+                <input type="number" name="item_discount[]" step="0.01" required>
+            `;
+            itemsDiv.appendChild(newItem);
+        }
+    </script>
+</body>
+</html>

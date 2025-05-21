@@ -1,0 +1,16 @@
+{
+    "name": "barto/invoicecreator",
+    "description": "Simple Invoice Creator - To the core of simplicity",
+    "type": "project",
+    "require": {
+        "tecnickcom/tcpdf": "dev-main"
+    },
+    "license": "GNU GPL",
+    "authors": [
+        {
+            "name": "barto44",
+            "email": "b.tauler12@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev"
+}
